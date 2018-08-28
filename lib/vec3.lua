@@ -50,6 +50,10 @@ vec3_mt = {
 		return tostring(v1) == tostring(v2)
 	end,
 	
+	__unm = function(self)
+		return vec3(-self.x, -self.y, -self.z)
+	end,
+	
 	__index = {
 		len = function(self)
 			return #self
