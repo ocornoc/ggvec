@@ -3,8 +3,7 @@ local ffi = require "ffi"
 ---------------------------------------------------------------
 
 ffi.cdef[[
-	// The first double is x, the second is y, etc.
-	typedef struct { double x, y, z, w; } ggvec4_ct;
+	struct __attribute__(( aligned(16) )) ggvec4_ct { __attribute__(( packed )) float x, y, z, w; };
 ]]
 
 ---------------------------------------------------------------
@@ -66,7 +65,7 @@ vec4_mt = {
 	},
 }
 
-vec4 = ffi.metatype("ggvec4_ct", vec4_mt)
+vec4 = ffi.metatype("struct ggvec4_ct", vec4_mt)
 
 ---------------------------------------------------------------
 
