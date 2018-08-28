@@ -1,3 +1,0 @@
-[submodule "lib/dynasm"]
-	path = lib/dynasm
-	url = https://github.com/luapower/dynasm
