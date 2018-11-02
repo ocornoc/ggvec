@@ -23,15 +23,15 @@ vec2_mt = {
 	end,
 	
 	__mul = function(v1, v2)
-		if type(v2) == "number" or not v2:isVector() then
+		if type(v2) == "number" or not v2.isVec2 then
 			return vec2(v1.x * v2, v1.y * v2)
-		elseif v2:isVector() then
+		elseif v2.isVec2 then
 			return v1.x * v2.x + v1.y * v2.y
 		end
 	end,
 	
 	__div = function(v1, n)
-		if type(n) == "number" or not n:isVector() then
+		if type(n) == "number" or not n.isVec2 then
 			return vec2(v1.x / n, v1.y / n)
 		else
 			scream_in_agony("Vector divisors must be numbers!")
@@ -63,9 +63,8 @@ vec2_mt = {
 			return acos((v1 * v2) / (v1:len() * v2:len()))
 		end,
 		
-		isVector = function()
-			return true
-		end,
+		isVec  = true,
+		isVec2 = true,
 	},
 }
 

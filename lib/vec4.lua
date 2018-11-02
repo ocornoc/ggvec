@@ -23,15 +23,15 @@ vec4_mt = {
 	end,
 	
 	__mul = function(v1, v2)
-		if type(v2) == "number" or not v2:isVector() then
+		if type(v2) == "number" or not v2.isVec4 then
 			return vec4(v1.x * v2, v1.y * v2, v1.z * v2, v1.w * v2)
-		elseif v2:isVector() then
+		elseif v2.isVec4 then
 			return v1.x * v2.x + v1.y * v2.y + v1.z * v2.z + v1.w * v2.w
 		end
 	end,
 	
 	__div = function(v1, n)
-		if type(n) == "number" or not n:isVector() then
+		if type(n) == "number" or not n.isVec4 then
 			return vec4(v1.x / n, v1.y / n, v1.z / n, v1.w / n)
 		else
 			scream_in_agony("Vector divisors must be numbers!")
@@ -63,9 +63,8 @@ vec4_mt = {
 			return acos((v1 * v2) / (v1:len() * v2:len()))
 		end,
 		
-		isVector = function()
-			return true
-		end,
+		isVec  = true,
+		isVec4 = true,
 	},
 }
 

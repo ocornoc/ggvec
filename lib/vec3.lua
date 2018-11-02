@@ -23,15 +23,15 @@ vec3_mt = {
 	end,
 	
 	__mul = function(v1, v2)
-		if type(v2) == "number" or not v2:isVector() then
+		if type(v2) == "number" or not v2.isVec3 then
 			return vec3(v1.x * v2, v1.y * v2, v1.z * v2)
-		elseif v2:isVector() then
+		elseif v2.isVec3 then
 			return v1.x * v2.x + v1.y * v2.y + v1.z * v2.z
 		end
 	end,
 	
 	__div = function(v1, n)
-		if type(n) == "number" or not n:isVector() then
+		if type(n) == "number" or not n.isVec3 then
 			return vec3(v1.x / n, v1.y / n, v1.z / n)
 		else
 			scream_in_agony("Vector divisors must be numbers!")
@@ -63,13 +63,12 @@ vec3_mt = {
 			return acos((v1 * v2) / (v1:len() * v2:len()))
 		end,
 		
-		isVector = function()
-			return true
-		end,
-		
 		cross = function(v1, v2)
 			return vec3((v1.y * v2.z) - (v1.z * v2.y), (v1.z * v2.x) - (v1.x * v2.z), (v1.x * v2.y) - (v1.y * v2.x))
-		end
+		end,
+		
+		isVec  = true,
+		isVec3 = true,
 	},
 }
 
