@@ -3,7 +3,7 @@ local ffi = require "ffi"
 ---------------------------------------------------------------
 
 ffi.cdef[[
-	struct __attribute__(( aligned(16) )) ggvec4_ct { __attribute__(( packed )) float x, y, z, w; };
+	struct __attribute__(( aligned(16) )) ggvec4_ct { __attribute__(( packed )) double x, y, z, w; };
 ]]
 
 ---------------------------------------------------------------
